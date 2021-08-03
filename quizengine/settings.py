@@ -31,6 +31,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
 
 ALLOWED_HOSTS = ['quizengineproject.herokuapp.com']
+# ALLOWED_HOSTS = []
 
 PROJECT_ROOT = os.path.dirname("quizengine")
 
