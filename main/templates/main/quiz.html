@@ -1,0 +1,212 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+{% static "/static" as staticUrl %}
+
+{% block nav %}
+
+<div class="user">
+    <span>Logged in: {{user_name}}</span>
+</div>
+
+{% endblock nav %}
+
+{% block body %}
+
+<section id="quiz">
+
+    <div class="timer">
+        <span>Time left </span>
+        <span id="clock">5:00</span>
+    </div>
+
+    <div class="que_card">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div id="que1" class="que">
+                {% for que in que1 %}
+                <span class="que_no">Q 1</span>
+                <p class="que_text">
+                    {{que.Question_text}}
+                </p>
+
+                {% if que.Image_file %}
+                <div class="que_img">
+                    <!-- {% with "main/images/"|add:que.Image_file as img_path %} -->
+                    <!-- {% endwith %} -->
+                    <!-- {% static '/main/images/' %}{{que.Image_file}} -->
+                    <img src="/static/main/images/{{que.Image_file}}" alt="image">
+                </div>
+                {% endif %}
+
+                <div class="options">
+                    {% if que.Question_type == "MCQ4" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans1" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans1" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_C" name="ans1" value="{{que.Option_C}}">
+                        <label for="opt_C">{{que.Option_C}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_D" name="ans1" value="{{que.Option_D}}">
+                        <label for="opt_D">{{que.Option_D}}</label>
+                    </div>
+
+
+                    {% elif que.Question_type == "MCQ3" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans1" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans1" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_C" name="ans1" value="{{que.Option_C}}">
+                        <label for="opt_C">{{que.Option_C}}</label>
+                    </div>
+
+                    {% elif que.Question_type == "MCQ2" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans1" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans1" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+
+                    {% else %}
+                    <input type="text" name="ans1" placeholder="Enter the answer">
+                    {% endif %}
+                </div>
+                <!-- <div class="toggle_que">
+                    <button type="button" onclick="prev_question()" class="btn btn_prev" disabled> Prev </button>
+                    <button type="button" onclick="next_question()" class="btn btn_next"> Next </button>
+                </div> -->
+                {% endfor %}
+            </div>
+            <div id="que2" class="que" style="display: none;">
+                {% for que in que2 %}
+                <span class="que_no">Q 2</span>
+                <p class="que_text">
+                    {{que.Question_text}}
+                </p>
+
+                {% if que.Image_file %}
+                <div class="que_img">
+                    <img src="/static/main/images/{{que.Image_file}}" alt="image">
+                </div>
+                {% endif %}
+
+                <div class="options">
+                    {% if que.Question_type == "MCQ4" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans2" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans2" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_C" name="ans2" value="{{que.Option_C}}">
+                        <label for="opt_C">{{que.Option_C}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_D" name="ans2" value="{{que.Option_D}}">
+                        <label for="opt_D">{{que.Option_D}}</label>
+                    </div>
+
+
+                    {% elif que.Question_type == "MCQ3" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans2" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans2" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_C" name="ans2" value="{{que.Option_C}}">
+                        <label for="opt_C">{{que.Option_C}}</label>
+                    </div>
+
+                    {% elif que.Question_type == "MCQ2" %}
+                    <div>
+                        <input type="radio" class="que_opt opt_A" name="ans2" value="{{que.Option_A}}">
+                        <label for="opt_A">{{que.Option_A}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="que_opt opt_B" name="ans2" value="{{que.Option_B}}">
+                        <label for="opt_B">{{que.Option_B}}</label>
+                    </div>
+
+                    {% else %}
+                    <input type="text" name="ans2" placeholder="Enter the answer">
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <input type="submit" class="submit_btn" value="End test">
+        </form>
+        <div class="toggle_que">
+            <button type="button" onclick="prev_question()" class="btn btn_prev"> Prev </button>
+            <button type="button" onclick="next_question()" class="btn btn_next"> Next </button>
+        </div>
+
+
+    </div>
+
+</section>
+{% endblock body %}
+
+{% block script %}
+
+<script>
+    var total_time = 5 * 60 * 1000;
+    var end_time = Date.parse("{{time_now}}") + total_time;
+
+    function run_timer() {
+        let curr_time_ = new (Date);
+        curr_time_ = Date.parse(curr_time_);
+
+        let total = end_time - curr_time_;
+
+        let min = Math.floor(total / (1000 * 60));
+        let sec = Math.floor((total / 1000) % 60);
+        let show = String(min) + ":" + String(sec);
+
+        if (total <= 0) {
+            clearInterval(x);
+            location.href = "/thanks";
+        }
+        document.getElementById("clock").textContent = show;
+    }
+
+    var x = window.setInterval(run_timer, 1000);
+
+
+    function next_question() {
+        document.getElementById("que1").style.display = "none";
+        document.getElementById("que2").style.display = "grid";
+    }
+
+    function prev_question() {
+        document.getElementById("que2").style.display = "none";
+        document.getElementById("que1").style.display = "grid";
+    }
+
+</script>
+
+{% endblock script %}

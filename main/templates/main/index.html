@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block body %}
+
+<section id="login" class="login">
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <span class="page_title">Let's understand your expertise!</span>
+    <!-- <span class="guide_note">Please enter your email address</span> -->
+    <input type="email" name = "email" class="email_inp" placeholder="Please enter your email address">
+    <input type="submit" class="submit_btn" value="Continue">
+</form>
+
+</section>
+
+{% endblock body %}
+
+{% block script %}
+{% if message %}
+<script>
+    alert("{{message}}")
+</script>
+    
+{% endif %}
+
+{% endblock script %}

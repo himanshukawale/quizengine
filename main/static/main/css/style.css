@@ -1,0 +1,239 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* ----------Nav bar------------- */
+
+#main_nav{
+    display: flex;
+    height: 8vh;
+    box-shadow: 0px 0px 4px black;
+    align-items: center;
+    padding: 0rem 3rem;
+}
+.logo{
+    font-family: "Nunito", sans-serif;
+    margin: auto;
+    font-size: 1.4rem;
+}
+
+#main_nav .user{
+    font-family: "Nunito", sans-serif;
+}
+
+/* --------------Main------------------ */
+
+#main{
+    display: flex;
+}
+
+
+/* -----------Login section----------- */
+
+#login{
+    display: flex;
+    margin: auto;
+    height: 45vh;
+}
+
+#login form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.page_title{
+    margin: auto;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.3rem;
+}
+
+#login .page_title{
+    margin-bottom: 10vh;
+}
+
+.email_inp{
+    font-family: "open sans", sans-serif;
+    margin: auto;
+    margin-bottom: 4vh;
+    padding-top: 1vh;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 16rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#login .submit_btn{
+    margin: auto;
+    font-family: "open sans", sans-serif;
+    font-size: 0.9rem;
+    height: 2rem;
+    width: 5rem;
+    border: 2px solid #2e2ef5;
+    border-radius: 30px;
+    background: transparent;
+    cursor: pointer;
+}
+
+#login .submit_btn:hover{
+    background-color: #2e2ef5;
+    color: white;
+}
+
+
+/* -------------------Quiz section------------------ */
+
+#quiz{
+    display: flex;
+    margin: auto;
+}
+
+.timer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 47%;
+    top: 15%;   
+    font-family: "Nunito", sans-serif;
+    align-items: center;
+}
+
+.timer #clock{
+    font-size: 1.7rem;
+}
+
+.que_card{
+    overflow: hidden;
+    padding: 1.2rem;
+    width: 34rem;
+    height: 42vh;
+    margin: auto;
+    margin-top: 20vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px grey;
+    z-index: 2;
+}
+
+.que .que_no{grid-area: q_no;}
+.que .que_text{grid-area: que;}
+.que .options{grid-area: op;}
+.que .btn_prev{grid-area: prev;}
+.que .btn_next{grid-area: next;}
+
+.que{
+    display: grid;
+    grid-template-areas: 
+    'q_no q_no q_no'
+    'que que que'
+    'op op op';
+    font-family: "Nunito", sans-serif;
+}
+
+.que *{
+    margin: 0.7vh 0vh;
+}
+
+.que_no{
+    margin: auto;
+}
+
+.que_text{
+    margin: auto;
+}
+
+.options{
+    margin-left: 5%;
+}
+
+.toggle_que{
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    margin: auto;
+    /* margin-top: 16vh; */
+    /* margin-top: 14vh; */
+    top: 63%;
+    width: 32rem;
+}
+
+.toggle_que button{
+    width: 4rem;
+    height: 2rem;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px grey;
+    cursor: pointer;
+}
+
+.toggle_que button:hover{
+    box-shadow: 0px 0px 9px #2e2ef5;
+
+}
+
+.toggle_que button:active{
+    background-color: #2e2ef5;
+    color: white;
+}
+
+#quiz .submit_btn{
+    position: fixed;
+    top: 10%;
+    left: 74%;
+    width: 5rem;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid red;
+    padding-bottom: 0px;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    cursor: pointer;
+}
+
+#quiz .submit_btn:hover{
+    color: red;
+}
+
+@keyframes slide_left{
+    0%{
+        left: 43%;
+    }
+    100%{
+        left: 14%;;
+    }
+}
+
+#quiz .que_img{
+    position: absolute;
+    z-index: 1;
+    top: 37%;
+    transition: 0.6s;
+    animation: slide_left 1s ease-in-out 0.2s 1 forwards;
+
+}
+
+.que_img image{
+    border-radius: 5px;
+}
+
+/* Thanks */
+
+.thanks{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    margin: auto;
+    top: 20%;
+    left: 33.1%;
+}
+
+.thanks p{
+    font-family: "sans", sans-serif;
+}

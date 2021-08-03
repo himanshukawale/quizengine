@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <!-- created style -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    {% block style %}{% endblock style %}
+
+    {% block title %}{% endblock title %}
+</head>
+<body>
+
+    <nav id="main_nav">
+
+        <span class="logo">
+            Brainworks
+        </span>
+
+        {% block nav %}{% endblock nav %}
+    </nav>
+
+    <main id="main">
+
+        {% block body %}{% endblock body %}
+    </main>
+    
+    {% block script %}{% endblock script %}
+</body>
+</html>
