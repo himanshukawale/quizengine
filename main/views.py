@@ -60,6 +60,8 @@ def home(request):
             if not user[0].time_history:
                 user[0].time_history = str(datetime.now())
                 user[0].save()
+            else:
+                print(str(user[0].time_history), "---------------------------")
 
             return redirect("/quiz")
         else:
@@ -69,11 +71,12 @@ def home(request):
 
 
 def thanks(request):
-    global user_name
     global ans
-
-    user_name.time_history = None
-    user_name.result = ans
-    user_name.save()
+    global user_name
+    user = User.objects.filter(Name = user_name)
+    user_n = user[0]
+    user_n.time_history = None
+    user_n.result = ans
+    user_n.save()
 
     return render(request, 'main/thanks.html', {"user_name":user_name})
